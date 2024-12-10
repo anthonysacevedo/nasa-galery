@@ -1,0 +1,53 @@
+/* Elimina el desplazamiento horizontal */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    height: 100%; /* Asegura que el cuerpo ocupe toda la altura */
+}
+
+h2 {
+    color:white;
+}
+
+/* Si es necesario, ajusta el contenedor de imágenes */
+#contenido {
+    padding: 0;
+    margin: 0;
+}
+
+.modal-body img {
+width: 100%;
+vertical-align: middle;
+}
+
+a p {
+    text-decoration: none;
+    color:black;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra inicial */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Mover hacia arriba 10px */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Incrementar la sombra */
+    background-color: rgb(241, 241, 255);
+}
+
+.rounded-div {
+    width: 100%;             /* Ancho del div */
+            height: 50%; 
+    border-bottom-left-radius: 100%;  /* Esquina inferior izquierda redondeada */
+            border-bottom-right-radius: 100%;
+            transition: all 0.3s ease;
+}
+
+.rounded-div:hover {
+    height: 60%;
+    transition-duration: 1s;
+    
+}
+
