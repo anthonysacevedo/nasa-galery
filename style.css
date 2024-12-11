@@ -81,7 +81,7 @@ a p {
 
 .rounded-div2 {
     width: 100%;             /* Ancho del div */
-            height: 100%; 
+            height: 70%; 
     border-bottom-left-radius: 100%;  /* Esquina inferior izquierda redondeada */
             border-bottom-right-radius: 100%;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
