@@ -4,39 +4,70 @@ const btn = document.getElementById('button-addon2');
 const contenido = document.getElementById('contenido');
 const modalContent = document.getElementById('modalContent');
 const modalTitle = document.getElementById('exampleModalLabel');
+const carouselContent = document.getElementById('carouselContenido');
+
+
 
 // Función para mostrar las imágenes
 function imprimirContenido(array) {
     let htmlContentToAppear = `
-    <div class="container-fluid p-0">
-        <div class="row g-4 justify-content-center" style="padding: 1rem;">`; // Cambié g-3 por g-4 para más espacio
+    <div id="carouselExample" class="carousel slide mt-5" data-bs-ride="carousel">
+        <div class="carousel-inner p-2">`; // Aquí empieza el carrusel
 
-for (let i = 0; i < array.length; i++) {
-    let item = array[i];
-    let imageUrl = item.links?.[0]?.href; // Verifica si hay links con datos
-    let nasaId = item.data?.[0]?.nasa_id;
-    let keyWords = item.data?.[0].keywords;
+    // Número de tarjetas por "slide"
+    const tarjetasPorSlide = 4; 
+    let slideIndex = 0;
 
-    if (imageUrl) {
-        htmlContentToAppear += `
-        <div class="col-3 d-flex justify-content-center tarjetas">
-            <div class="card shadow-sm" style="width: 18rem;"> <!-- Ajusta el tamaño uniforme de las tarjetas -->
-                <a href="#" class="img-link" data-index="${i}" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <img class="card-img-top" src="${imageUrl}" alt="NASA image" 
-                        style="height: 200px; object-fit: cover;"> <!-- Tamaño uniforme para imágenes -->
-                        <p class="p-2">Palabras claves: ${imprimirMaximoTres(keyWords)}</p>
-                        
-                </a>
-            </div>
-        </div>`;
+    for (let i = 0; i < array.length; i++) {
+        let item = array[i];
+        let imageUrl = item.links?.[0]?.href; // Verifica si hay links con datos
+        let nasaId = item.data?.[0]?.nasa_id;
+        let keyWords = item.data?.[0]?.keywords;
+
+        // Iniciar un nuevo "slide" si es el primero o al llegar al límite de tarjetas
+        if (i % tarjetasPorSlide === 0) {
+            slideIndex++;
+            htmlContentToAppear += `
+            <div class="carousel-item ${slideIndex === 1 ? 'active' : ''}">
+                <div class="row justify-content-center gx-1 gy-1">`; // Ajustar gx y gy para reducir espacio
+        }
+
+        if (imageUrl) {
+            htmlContentToAppear += `
+            <div class="col-md-2 d-flex justify-content-center">
+                <div class="card shadow-sm" style="width: 18rem; margin: 0.2rem;"> <!-- Ajusta el tamaño y márgenes de las tarjetas -->
+                    <a href="#" class="img-link" data-index="${i}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img class="card-img-top" src="${imageUrl}" alt="NASA image" 
+                            style="height: 180px; object-fit: cover;"> <!-- Tamaño uniforme para imágenes -->
+                        <div class="card-body">
+                            <p class="card-text">Palabras claves: ${imprimirMaximoTres(keyWords)}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>`;
+        }
+
+        // Cerrar el "slide" al llegar al límite de tarjetas o al final de la lista
+        if ((i + 1) % tarjetasPorSlide === 0 || i === array.length - 1) {
+            htmlContentToAppear += `
+                </div> <!-- Cierra fila -->
+            </div> <!-- Cierra slide -->`;
+        }
     }
-}
 
-htmlContentToAppear += `
-    </div>
-</div>`;
+    htmlContentToAppear += `
+        </div> <!-- Cierra carousel-inner -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" style="background-color: black;" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" style="background-color: black;" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div> <!-- Cierra carouselExample -->`;
 
-
+    // Inserta el contenido en el carrusel
     contenido.innerHTML = htmlContentToAppear;
 
     // Agregar eventos a las imágenes generadas
@@ -47,7 +78,9 @@ htmlContentToAppear += `
             recorrerJson(array, index);
         });
     });
-}
+};
+
+
 
 // Función para procesar la imagen seleccionada
 function recorrerJson(array, index) {
@@ -93,9 +126,12 @@ btn.addEventListener('click', function () {
         .then(data => {
             const items = data.collection.items || [];
             imprimirContenido(items);
+            contenido.scrollIntoView({ behavior: 'smooth' });
         })
         .catch(error => {
             console.error('Error al obtener los datos:', error);
         });
+
+        
 });
 

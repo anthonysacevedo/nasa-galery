@@ -4,6 +4,13 @@ body, html {
     padding: 0;
     overflow-x: hidden; /* Evita el desplazamiento horizontal */
     height: 100%; /* Asegura que el cuerpo ocupe toda la altura */
+    scrollbar-width: none;
+}
+
+footer {
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 h2 {
@@ -51,3 +58,31 @@ a p {
     
 }
 
+.card {
+    margin: 0.1rem; /* Reduce el margen entre tarjetas */
+}
+
+.carousel-inner .row {
+    gap: 0.5rem; /* Controla el espacio entre filas y columnas */
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+#catImg {
+    max-width: 100%;
+    height: auto;
+    }
+
+#catIntro p {
+    vertical-align: middle;
+}
+
+.rounded-div2 {
+    width: 100%;             /* Ancho del div */
+            height: 100%; 
+    border-bottom-left-radius: 100%;  /* Esquina inferior izquierda redondeada */
+            border-bottom-right-radius: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
