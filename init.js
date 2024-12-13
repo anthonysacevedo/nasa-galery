@@ -37,7 +37,7 @@ function imprimirContenido(array) {
 
         if (imageUrl) {
             htmlContentToAppear += `
-            <div class="col-md-2 d-flex justify-content-center">
+            <div class="col-md-2 col-sm-12 d-flex justify-content-center">
                 <div class="card shadow-sm" style="width: 18rem; margin: 0.2rem;"> <!-- Ajusta el tamaño y márgenes de las tarjetas -->
                     <a href="#" class="img-link" data-index="${i}" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <img class="card-img-top" src="${imageUrl}" alt="NASA image" 
