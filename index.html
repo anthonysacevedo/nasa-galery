@@ -11,37 +11,41 @@
 
 
     <!--Barra de busqueda-->
-    <div class="bg-dark rounded-div shadow-lg">
+    <div class="introContent">
    <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-6 col-md-6 col-sm-6 m-5">
-        <h2 class="text-center fs-1">NASA: Buscador de imagenes</h2>
+    <div class="row justify-content-center aling-middle">
+      <div class="col-md-9 col-sm-12 col-lg-9 inputDivIntro">
+          <div class="input-group input-group-lg mt-5 mb-5">
+              <input type="text" id="search" value="" placeholder="Search.." name="search" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+              <button class="btn btn-outline-black btn-secondary" type="button" id="button-addon2">Buscar</button>
+          </div>
       </div>
-    </div>
-        <div class="row justify-content-center aling-middle">
-            <div class="col-md-6 col-sm-12 col-lg-6 mb-3">
-                <div class="input-group input-group-lg">
-                    <input type="text" id="search" value="" placeholder="Search.." name="search" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-black btn-secondary" type="button" id="button-addon2">Buscar</button>
-                </div>
-            </div>
+  </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 mt-5">
+        <h2 class="introTitle">NASA</h2>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-6 mb-5 ">
+        <p class="introSubTitle text-white">Buscador de imagenes</p>
+      </div>
+      </div>
+    
+       
         </div>
         </div>
-        </div>
-
-
-<!--introduccion-->
-<div class="bg-white rounded-div2">
-        <div class="container mt-5">
-
-          <div class="row justify-content-center align-items-center">
-            <div class="col-6 d-flex justify-content-center" id="catImg">
-                <img src="nasa1.jpg" class="rounded">
-            </div>
-        </div>
+       
         
-        <div class="row justify-content-center align-items-center"> <!-- Añadimos align-items-center -->
-            <div class="col-6 d-flex flex-column justify-content-center" id="catIntro" style="height: 100%;"> <!-- d-flex para centrar -->
+
+<!--introduccion a la web-->
+        
+<div class="bg-white"> <!--AGREGAR CLASE rounded-div2-->
+  <div class="container">
+        
+        <div class="row"> 
+            <div class="col-6 d-flex flex-column justify-content-center introText" id="catIntro" style="height: 100%;"> 
+              <h4 class="subtitleMenor">QUE HACE LA NASA?</h4>
                 <p class="text-justify m-0">
                     La ciencia que emplea la NASA se centra en una mejor 
                     comprensión de la Tierra a través del Sistema de Observación 
@@ -55,20 +59,66 @@
                 </p>
             </div>
         </div>
+      </div>
+</div>
+        
           
+        
+      
+      
+
+      <!--Aqui se imprime contenido estatico
+      <div class="container">
+        <div class="mt-5" id="staticContent">
+          <div class="row"></div> 
         </div>
       </div>
-      
-      
+    -->
 
   
-
+<!--CONTENIDO IMPRESO DESDE JS-->
         <div class="row justify-content-center">
-            <div class="mb-5" id="contenido"></div>
+            <div class="mb-1" id="contenido"></div>
+            <div class="col-9 mb-5 text-start">
+              <a class="verMas" href="content.html">ver todo...</a>
+          </div>
         </div>
-    </div>
 
-    <!--Modal-->
+
+      <div class="bg-white">
+        <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-6 mt-5">
+            <h3 class="text-dark">Sobre la NASA</h3>
+            <p class="text-justify">Durante más de 50 años, los satélites de la NASA 
+              han proporcionado datos sobre la tierra, el agua, 
+              el aire, la temperatura y el clima de la Tierra. 
+              El Centro de Información de la Tierra de la NASA 
+              permite a los visitantes ver cómo está cambiando 
+              nuestro planeta en seis áreas clave: aumento del 
+              nivel del mar e impactos costeros, salud y calidad 
+              del aire, incendios forestales, gases de efecto 
+              invernadero, energía sostenible y agricultura.
+            <a href="https://www.nasa.gov/">Ver mas aqui.</a>
+            </p>
+          </div>
+          <div class="col-6 mt-5">
+            <h3 class="text-dark">Por qué ir al espacio?</h3>
+            <p class="text-justify">La exploración espacial humana ayuda a abordar preguntas 
+              fundamentales sobre nuestro lugar en el universo y la historia 
+              de nuestro sistema solar.
+              La visión de exploración de la NASA se basa en brindar valor a 
+              la humanidad respondiendo algunas de las preguntas más fundamentales: 
+              ¿Por qué estamos aquí? ¿Cómo empezó todo? ¿Estamos solos? ¿Qué viene después? 
+              La NASA se creó para empezar a responder algunas de
+               estas preguntas. </p>
+          </div>
+        </div>
+      </div>
+      </div>
+    
+
+    <!--Modal para tarjetas con informacion sobre las imagenes-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

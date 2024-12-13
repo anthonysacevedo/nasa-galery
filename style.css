@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&family=Syne:wght@400..800&display=swap');
 /* Elimina el desplazamiento horizontal */
 body, html {
     margin: 0;
@@ -5,6 +7,11 @@ body, html {
     overflow-x: hidden; /* Evita el desplazamiento horizontal */
     height: 100%; /* Asegura que el cuerpo ocupe toda la altura */
     scrollbar-width: none;
+}
+
+body {
+    background-image: url(galaxia.webp);
+    background-size: cover;
 }
 
 footer {
@@ -15,6 +22,41 @@ footer {
 
 h2 {
     color:white;
+}
+
+.subtitleMenor {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: bolder;
+}
+
+/*Contenido introductorio al Index*/
+.introContent {
+    background-color: #0b3d91;
+}
+
+.inputDivIntro {
+    margin-top: 5rem;
+}
+
+.introTitle {
+    font-size: 80pt;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: bolder;
+    color: rgb(179, 217, 248);
+}
+
+.introSubTitle {
+    font-size: 40pt;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: lighter;
+    text-align: left;
+    line-height: 1;
+    margin-bottom: 2rem;
+}
+
+.introText {
+    margin-bottom: 5rem;
+    margin-top: 5rem;
 }
 
 /* Si es necesario, ajusta el contenedor de imágenes */
@@ -81,8 +123,12 @@ a p {
 
 .rounded-div2 {
     width: 100%;             /* Ancho del div */
-            height: 70%; 
+            height: auto; 
     border-bottom-left-radius: 100%;  /* Esquina inferior izquierda redondeada */
             border-bottom-right-radius: 100%;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.verMas {
+    margin-left: 3rem;
 }

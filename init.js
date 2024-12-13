@@ -5,10 +5,13 @@ const contenido = document.getElementById('contenido');
 const modalContent = document.getElementById('modalContent');
 const modalTitle = document.getElementById('exampleModalLabel');
 const carouselContent = document.getElementById('carouselContenido');
+const staticContent = document.getElementById('staticContent');
 
 
 
-// Función para mostrar las imágenes
+
+
+// Función para mostrar las imágenes cuando se utiliza el buscador.
 function imprimirContenido(array) {
     let htmlContentToAppear = `
     <div id="carouselExample" class="carousel slide mt-5" data-bs-ride="carousel">
@@ -111,7 +114,69 @@ function imprimirMaximoTres(lista) {
     return listaDeTres;
 }
 
-// Evento para el botón de búsqueda
+//Esta funcion imprime todas las imagenes del arreglo -Actualmente no se utiliza-
+/*function imprimirImagenes(array) {
+    const row = staticContent.querySelector('.row');
+    if (!row) {
+        console.error('El contenedor .row no existe en staticContent');
+        return;
+    }
+
+    row.innerHTML = ''; // Limpia contenido previo
+
+    const fragment = document.createDocumentFragment();
+
+    for (let i = 0; i < array.length; i++) {
+        let item = array[i];
+        let imageUrl = item.links?.[0]?.href;
+
+        if (imageUrl) {
+            const colDiv = document.createElement('div');
+            colDiv.classList.add('col-3', 'mb-3'); // Diseño ajustado
+
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = 'NASA image';
+            img.classList.add('img-fluid,'); // Estilo para imágenes
+            img.style.objectFit = 'cover';
+            img.style.width = '250px';
+            img.style.height = '250px';
+            colDiv.appendChild(img);
+
+            fragment.appendChild(colDiv);
+        }
+    }
+
+    row.appendChild(fragment);
+}*/
+
+function mostrarContenido() {
+    const endPoint = 'jupiter';
+    const searchInUrl = `${url}?q=${endPoint}`;
+
+    fetch(searchInUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const elements = data.collection.items || [];
+            imprimirContenido(elements);
+        })
+        .catch(error => {
+            console.error('Error al obtener los datos:', error);
+        });
+}
+
+// imprime contenido cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function () {
+    mostrarContenido();
+});
+
+
+// Evento para el botón de búsqueda - imprime las imagenes en el carousel segun lo que busque el usuario
 btn.addEventListener('click', function () {
     const request = search.value;
     const searchUrl = `${url}?q=${request}`;
@@ -127,6 +192,7 @@ btn.addEventListener('click', function () {
             const items = data.collection.items || [];
             imprimirContenido(items);
             contenido.scrollIntoView({ behavior: 'smooth' });
+           
         })
         .catch(error => {
             console.error('Error al obtener los datos:', error);
