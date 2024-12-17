@@ -162,14 +162,13 @@ div.transparency::before {
 @media only screen and (min-width: 992px) {
     .bannerVentana h4 {
     font-size: 200pt;
-    color: white;
-    font-family: "Space Grotesk", sans-serif;
-    text-align: left; /* Opcional: centra el texto horizontalmente */
-    z-index: 3; /* Asegura que esté sobre el pseudoelemento */
-    margin: 0; /* Elimina cualquier margen adicional */
-    opacity: 0.2;
-    
 }
+}
+
+@media only screen and (min-width: 1200px) {
+    .bannerVentana h4 {
+        font-size: 220pt;
+    }
 }
 
 .titleMini {
