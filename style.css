@@ -160,7 +160,7 @@ div.transparency::before {
 }
 
 .titleMini.h3{
-    font-size: 30pt;
+    font-size: 100pt;
     color: white;
     font-family: "Space Grotesk", sans-serif;
     text-align: left; /* Opcional: centra el texto horizontalmente */
