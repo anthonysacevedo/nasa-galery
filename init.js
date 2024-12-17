@@ -1,6 +1,6 @@
 const url = 'https://images-api.nasa.gov/search';
 const search = document.getElementById('search');
-const btn = document.getElementById('button-addon2');
+const btn = document.getElementById('search-button');
 const contenido = document.getElementById('contenido');
 const modalContent = document.getElementById('modalContent');
 const modalTitle = document.getElementById('exampleModalLabel');
@@ -18,7 +18,7 @@ function imprimirContenido(array) {
         <div class="carousel-inner p-2">`; // Aquí empieza el carrusel
 
     // Número de tarjetas por "slide"
-    const tarjetasPorSlide = 4; 
+    const tarjetasPorSlide = 3; 
     let slideIndex = 0;
 
     for (let i = 0; i < array.length; i++) {
@@ -37,7 +37,7 @@ function imprimirContenido(array) {
 
         if (imageUrl) {
             htmlContentToAppear += `
-            <div class="col-md-2 col-sm-12 d-flex justify-content-center">
+            <div class="col-md-3 d-flex justify-content-center">
                 <div class="card shadow-sm" style="width: 18rem; margin: 0.2rem;"> <!-- Ajusta el tamaño y márgenes de las tarjetas -->
                     <a href="#" class="img-link" data-index="${i}" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <img class="card-img-top" src="${imageUrl}" alt="NASA image" 
@@ -150,7 +150,7 @@ function imprimirMaximoTres(lista) {
     row.appendChild(fragment);
 }*/
 
-function mostrarContenido() {
+/*function mostrarContenido() { --Esta funcion es estatica-- Es la misma funcion que abajo
     const endPoint = 'jupiter';
     const searchInUrl = `${url}?q=${endPoint}`;
 
@@ -168,11 +168,32 @@ function mostrarContenido() {
         .catch(error => {
             console.error('Error al obtener los datos:', error);
         });
+}*/
+
+/*funcion reutilizable*/
+function mostrarContenido(funcion,imagen) {
+    const endPoint = imagen;
+    const searchInUrl = `${url}?q=${endPoint}`;
+
+    fetch(searchInUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const elements = data.collection.items || [];
+            funcion(elements);
+        })
+        .catch(error => {
+            console.error('Error al obtener los datos:', error);
+        });
 }
 
 // imprime contenido cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function () {
-    mostrarContenido();
+    mostrarContenido(imprimirContenido,'jupiter');
 });
 
 

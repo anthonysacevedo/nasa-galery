@@ -11,30 +11,48 @@
 
 
     <!--Barra de busqueda-->
-    <div class="introContent">
-   <div class="container">
-    <div class="row justify-content-center aling-middle">
-      <div class="col-md-9 col-sm-12 col-lg-9 inputDivIntro">
-          <div class="input-group input-group-lg mt-5 mb-5">
-              <input type="text" id="search" value="" placeholder="Search.." name="search" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-              <button class="btn btn-outline-black btn-secondary" type="button" id="button-addon2">Buscar</button>
-          </div>
+    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand">N-galery</a>
+        <div class="d-flex" role="search">
+          <input id="search" value="" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button id="search-button" class="btn btn-outline-primary">Search</button>
+        </div>
       </div>
-  </div>
-    <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-6 mt-5">
-        <h2 class="introTitle">NASA</h2>
-      </div>
-      </div>
-      <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-12 mb-5 ">
-        <p class="introSubTitle text-white">Buscador de imagenes</p>
-      </div>
-      </div>
-    
+    </nav>
+
+    <!--Contenido inicial, portada-->
+  <div class="introContent">
+    <div class="transparency">
+   <div class="container introContainer">
+     
+      <div class="row introRow justify-content-center">
+        
+        <div class="col-lg-5 col-md-3 col-sm-12 titleDiv">
+           <h2 class="introTitle">NASA</h2>
+           <p class="introSubTitle text-white">Buscador de imagenes</p>
+        </div>
+        
+        <div class="col-2 banner-content banner1 d-md-block d-lg-block d-sm-none">
+          <img src="banner1.jpeg" class="img-fluid object-fit-cover">
+        </div>
+        
+        <div class="col-2 banner-content banner2 d-md-block d-lg-block d-sm-none">
+          <img src="banner2.jpeg" class="img-fluid object-fit-cover">
+        </div>
+
+        <div class="col-2 banner-content banner2 d-md-block d-lg-block d-sm-none">
+          <img src="banner2.jpeg" class="img-fluid object-fit-cover">
+        </div>
        
-        </div>
-        </div>
+      
+      </div> 
+    </div>
+    </div>
+   
+  </div>
+
+
        
         
 
@@ -44,26 +62,49 @@
   <div class="container">
         
         <div class="row"> 
+          <div class="col-lg-6 col-md-6 col-sm-12"></div>
             <div class="col-lg-6 col-md-6 col-sm-12 d-flex flex-column justify-content-center introText" id="catIntro" style="height: 100%;"> 
               <h4 class="subtitleMenor">QUE HACE LA NASA?</h4>
-                <p class="text-justify m-0">
-                    La ciencia que emplea la NASA se centra en una mejor 
-                    comprensión de la Tierra a través del Sistema de Observación 
-                    de la Tierra, avanzar en la heliofísica mediante los 
-                    esfuerzos del Programa de Investigación en Heliofísica de la 
-                    Dirección de Misiones Científicas, explorar cuerpos por todo 
-                    el sistema solar con misiones robóticas avanzadas como la New Horizons e 
-                    investigar cuestiones de astrofísica como el Big Bang a través de los Grandes
-                    Observatorios y programas asociados. La NASA comparte información con 
-                    diversas organizaciones nacionales e internacionales.
-                </p>
+              <p class="text-justify m-0">
+                La ciencia que emplea la NASA se centra en una mejor 
+                comprensión de la Tierra a través del Sistema de Observación 
+                de la Tierra, avanzar en la heliofísica mediante los 
+                esfuerzos del Programa de Investigación en Heliofísica de la 
+                Dirección de Misiones Científicas, explorar cuerpos por todo 
+                el sistema solar con misiones robóticas avanzadas como la New Horizons e 
+                investigar cuestiones de astrofísica como el Big Bang a través de los Grandes
+                Observatorios y programas asociados. La NASA comparte información con 
+                diversas organizaciones nacionales e internacionales.
+            </p>
             </div>
+            
         </div>
+
+        <div class="row">
+          <div class="col-12">
+
+          </div>
+        </div>
+
+
       </div>
 </div>
         
           
-        
+<!--Banner efecto ventana espacial-->
+    <div class="transparency">
+      <div class="bannerVentana">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h4>Exploremos el espacio...</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+          
+ 
       
       
 
@@ -76,13 +117,23 @@
     -->
 
   
+
 <!--CONTENIDO IMPRESO DESDE JS-->
+<div class="bg-white">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 tituloContenido">
+      <h4>Galeria de imagenes</h4>
+    </div>
+  </div>
         <div class="row justify-content-center">
             <div class="mb-1" id="contenido"></div>
-            <div class="col-9 mb-5 text-start">
+            <div class="col-9 mb-5 text-start ">
               <a class="verMas" href="content.html">ver todo...</a>
           </div>
         </div>
+      </div>
+</div>
 
 
       <div class="bg-white">
