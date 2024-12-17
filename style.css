@@ -163,7 +163,7 @@ div.transparency::before {
     font-size: 100pt;
     color: white;
     font-family: "Space Grotesk", sans-serif;
-    text-align: left; /* Opcional: centra el texto horizontalmente */
+    text-align: center; /* Opcional: centra el texto horizontalmente */
     z-index: 3; /* Asegura que esté sobre el pseudoelemento */
     margin: 0; /* Elimina cualquier margen adicional */
     opacity: 0.2;
