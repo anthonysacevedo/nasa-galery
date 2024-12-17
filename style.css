@@ -161,13 +161,13 @@ div.transparency::before {
 
 @media only screen and (min-width: 992px) {
     .bannerVentana h4 {
-    font-size: 200pt;
+    font-size: 200pt !important;
 }
 }
 
 @media only screen and (min-width: 1200px) {
     .bannerVentana h4 {
-        font-size: 220pt;
+        font-size: 220pt !important;
     }
 }
 
