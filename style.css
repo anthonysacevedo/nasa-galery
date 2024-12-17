@@ -159,7 +159,7 @@ div.transparency::before {
     
 }
 
-.titleMini {
+.titleMini h3 {
     font-size: 100pt;
     color: white;
     font-family: "Space Grotesk", sans-serif;
