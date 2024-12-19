@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&family=Syne:wght@400..800&display=swap');
+
+.swiper {
+    width: 70%;
+    height: 70vh;
+   
+  }
+
+.swiper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+    
+  }
+
+.swiper img:hover {
+  filter: grayscale(0%);
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita el desplazamiento horizontal */
+  height: 100%; /* Asegura que el cuerpo ocupe toda la altura */
+  scrollbar-width: none;
+  height: 100%;
+}
+
+body {
+  background-image: url(galaxia.webp);
+  background-size: cover;
+}
+
+footer {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+h2 {
+  color:white;
+}
+
+h3 {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.subtitleMenor {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: bolder;
+  font-size: 40pt;
+}
+
+/*Contenido introductorio al Index*/
+.navbar a {
+  font-family: "Space Grotesk", sans-serif;
+}
+.introContent {
+  /*background-color: #0b3d91;*/
+  background-image: url(bannerPrincipal.png);
+  height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la pantalla */
+  display: flex; /* Activa el comportamiento de flexbox */
+  flex-direction: column; /* Alinea los hijos verticalmente */
+  z-index: -1;
+}
+
+.introContainer {
+  display: flex; /* Flexbox dentro del contenedor */
+  flex-direction: column; /* Los hijos se organizan en columna */
+  height: 100%; /* Ocupa toda la altura disponible */
+
+  
+  
+}
+
+
+
+
+
+.introRow {
+  display: flex; /* Flexbox dentro de la fila */
+  flex-grow: 1; /* Permite que la fila ocupe el espacio restante */
+}
+
+.titleDiv {
+  display: flex;
+  flex-direction: column; /* Alinea el contenido en columna */
+  justify-content: flex-end; /* Alinea los elementos al final */
+  height: 100%; /* Ocupa toda la altura disponible */
+  z-index: 2;
+  padding: 1rem;
+}
+
+.introTitle, .introSubTitle {
+  margin: 0; /* Elimina márgenes extra */
+}
+
+.introTitle {
+  font-size: 80pt;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: bolder;
+  color: rgb(179, 217, 248);
+}
+
+.introSubTitle {
+  font-size: 40pt;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: lighter;
+  color: white;
+  line-height: 40pt;
+  margin-bottom: 5rem;
+}
+
+div.transparency {
+  position: relative; /* Para que el pseudoelemento se posicione correctamente */
+  height: 100vh;
+}
+
+div.transparency::before {
+  content: ''; /* Pseudoelemento vacío */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.6; /* Opacidad solo aplicada al fondo */
+  z-index: 1; /* Asegura que el fondo esté detrás del contenido */
+}
+
+.banner-content {
+  /* Ejemplo de fondo para los banners */
+  text-align: right;
+  height: 80vh;
+  margin-top: 3rem;
+  opacity: 1;
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+  
+}
+
+.banner-content:hover {
+  transform: translateY(-10px); /* Mover hacia arriba 10px */
+     
+}
+
+
+.banner-content img {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+
+.bannerVentana {
+  display: flex; /* Activa Flexbox */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la pantalla */
+  position: relative; /* Mantiene la relación con el pseudoelemento */
+  z-index: 2; /* Asegura que esté sobre el fondo */
+  backdrop-filter: blur(5px);
+  border:solid 3px rgba(255,255,255,05);
+
+}
+
+.bannerVentana h4 {
+  font-size: 146pt;
+  color: white;
+  font-family: "Space Grotesk", sans-serif;
+  text-align: left; /* Opcional: centra el texto horizontalmente */
+  z-index: 3; /* Asegura que esté sobre el pseudoelemento */
+  margin: 0; /* Elimina cualquier margen adicional */
+  opacity: 0.2;
+  
+}
+
+.titleMini {
+  font-size: 47pt;
+  color: white;
+  text-align: center;
+  z-index: 3;
+  opacity: 0.2;
+}
+
+.introText {
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+}
+
+
+
+/* Si es necesario, ajusta el contenedor de imágenes */
+#contenido {
+  padding: 0;
+  margin: 0;
+  
+}
+
+.tituloContenido h3 {
+  margin-top: 6rem;
+  font-family:"Space Grotesk", sans-serif;
+  font-size: 30pt;
+  font-weight: lighter;
+  color: rgb(0, 65, 117);
+}
+
+/*MODAL___________________________________________*/
+
+
+
+.modal-body img {
+max-width: 100%;
+height: auto;
+vertical-align: middle;
+}
+
+a p {
+  text-decoration: none;
+  color:black;
+}
+
+
+
+.rounded-div {
+  width: 100%;             /* Ancho del div */
+          height: 50%; 
+  border-bottom-left-radius: 100%;  /* Esquina inferior izquierda redondeada */
+          border-bottom-right-radius: 100%;
+          transition: all 0.3s ease;
+}
+
+.rounded-div:hover {
+  height: 60%;
+  transition-duration: 1s;
+  
+}
+
+
+
+.text-justify {
+  text-align: justify;
+}
+
+#catImg {
+  max-width: 100%;
+  height: auto;
+  }
+
+#catIntro p {
+  vertical-align: middle;
+}
+
+.rounded-div2 {
+  width: 100%;             /* Ancho del div */
+          height: 100vh; 
+  border-bottom-left-radius:60%;  /* Esquina inferior izquierda redondeada */
+          border-bottom-right-radius: 60%;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+
