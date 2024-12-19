@@ -10,8 +10,8 @@ const swiper = new Swiper('.swiper', {
     //direction: 'horizontal',
     //loop: false,
     //effect: 'cards',
-  slidesPerView: 2, // Muestra 3 diapositivas a la vez
-  spaceBetween: 10, // Espacio entre diapositivas
+  slidesPerView: 1.5, // Muestra 3 diapositivas a la vez
+  spaceBetween: 20, // Espacio entre diapositivas
   centeredSlides: true, // Centra la diapositiva activa
   watchSlidesVisibility: true, // Monitorea visibilidad
   watchSlidesProgress: true, // Monitorea progreso de las slides
