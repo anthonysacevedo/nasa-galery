@@ -7,9 +7,14 @@ const modalTitle = document.getElementById('exampleModalLabel');
 
 // Inicializamos Swiper
 const swiper = new Swiper('.swiper', {
-    direction: 'horizontal',
-    loop: false,
-    effect: 'cards',
+    //direction: 'horizontal',
+    //loop: false,
+    //effect: 'cards',
+  slidesPerView: 3, // Muestra 3 diapositivas a la vez
+  spaceBetween: 10, // Espacio entre diapositivas
+  centeredSlides: true, // Centra la diapositiva activa
+  watchSlidesVisibility: true, // Monitorea visibilidad
+  watchSlidesProgress: true, // Monitorea progreso de las slides
 
     // Navigation arrows
     navigation: {
