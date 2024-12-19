@@ -66,9 +66,11 @@ function imprimirContenido(array) {
     
     // Añadir todo el fragmento al contenedor del carrusel
     swiperWrapper.appendChild(fragment);
-    
-    // Actualizamos Swiper para que detecte las nuevas diapositivas
+
+// Utiliza requestAnimationFrame para evitar bloqueos
+requestAnimationFrame(() => {
     swiper.update();
+});
 
     const imgLinks = document.querySelectorAll('.img-link');
     imgLinks.forEach(link => {
