@@ -31,7 +31,7 @@ const swiper = new Swiper('.swiper', {
 function imprimirContenido(array) {
     const fragment = document.createDocumentFragment();
 
-    for (let i = 6; i < array.length; i++) {
+    for (let i = 6; i < array.length; 15) {
         let item = array[i];
         let imageUrl = item.links?.[0]?.href;
     
