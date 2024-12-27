@@ -34,7 +34,6 @@ body, html {
   overflow-x: hidden; /* Evita el desplazamiento horizontal */
   height: 100%; /* Asegura que el cuerpo ocupe toda la altura */
   scrollbar-width: none;
-  height: 100%;
 }
 
 body {
@@ -43,9 +42,17 @@ body {
 }
 
 footer {
-  margin: 0;
-  padding: 0;
+  padding: 1rem;
   border: 0;
+}
+
+footer p {
+  color: white;
+  margin-bottom: 0;
+  font-weight: lighter;
+  text-align: center;
+  font-size: 10pt;
+  font-family:"Space Grotesk", sans-serif;
 }
 
 h2 {
@@ -79,11 +86,33 @@ h3 {
   display: flex; /* Flexbox dentro del contenedor */
   flex-direction: column; /* Los hijos se organizan en columna */
   height: 100%; /* Ocupa toda la altura disponible */
-
-  
   
 }
 
+.introContainer2 h4{
+font-family: "Space Grotesk", sans-serif;
+color: black;
+font-size: 30pt;
+font-weight: lighter;
+hyphens: auto;
+text-align: start;
+}
+
+.introContainer2 p {
+  text-align: left;
+  color: red;
+  border: solid red 1px;
+ 
+}
+
+.introContainer2 {
+  margin: auto;
+  padding-left: 3rem;
+  padding-top: 4rem;
+ 
+  
+
+}
 
 
 
@@ -208,13 +237,45 @@ div.transparency::before {
   
 }
 
+.tituloContenido {
+  margin: auto;
+  padding-left: 23vh;
+}
+
+.tituloContenido a {
+  font-size: 12pt;
+  text-align: left !important;
+  color: red;
+  text-decoration-line: none;
+}
+.tituloContenido a:hover {
+  color: rgb(172, 3, 3);
+}
+
 .tituloContenido h3 {
-  margin-top: 6rem;
-  margin-left: 3rem;
   font-family:"Space Grotesk", sans-serif;
   font-size: 35pt;
   font-weight: lighter;
   color: rgb(0, 65, 117);
+}
+
+.sobreNasa{
+  border: solid red 1px;
+}
+
+.sobreNasa:hover {
+  border: solid rgb(172, 3, 3) 1px;
+}
+
+.sobreNasa a {
+  text-decoration-line: none;
+  padding-left: 1rem;
+  color: red;
+  display: block;
+}
+
+.sobreNasa a:hover {
+  color: rgb(172, 3, 3);
 }
 
 /*MODAL___________________________________________*/
