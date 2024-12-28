@@ -333,3 +333,41 @@ a p {
 }
 
 
+/*Content page Styel */
+
+
+.galeryNav input {
+  color: white;
+  backdrop-filter: blur(5px);
+  
+}
+
+.navbar-nav a {
+  font-family:"Space Grotesk", sans-serif;
+  font-size: 15pt;
+  font-weight: lighter;
+}
+
+.navbar-nav a:hover {
+  color: rgb(2, 121, 219) !important;
+}
+
+#contentPage {
+  background-image: none;
+}
+
+.searchTitle h3 {
+  font-weight: lighter;
+  color:  blck;
+  text-align: center;
+}
+
+.imgImpress {
+  height: 100%;
+  width: 100%;
+}
+
+.divImpress {
+  padding-bottom: 1rem;
+}
+

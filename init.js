@@ -1,9 +1,10 @@
 const search = document.getElementById('search');
 const btn = document.getElementById('search-button');
 const url = 'https://images-api.nasa.gov/search';
-const swiperWrapper = document.querySelector('.swiper-wrapper'); // Accede al contenedor del carrusel
+const swiperImg = document.getElementById('swiperImg'); // Accede al contenedor del carrusel de imagenes
 const modalContent = document.getElementById('modalContent');
 const modalTitle = document.getElementById('exampleModalLabel');
+const verTodo = document.querySelector('.vertodo');
 
 // Inicializamos Swiper
 const swiper = new Swiper('.swiper', {
@@ -65,7 +66,7 @@ function imprimirContenido(array) {
     }
     
     // Añadir todo el fragmento al contenedor del carrusel
-    swiperWrapper.appendChild(fragment);
+    swiperImg.appendChild(fragment);
     
     // Actualizamos Swiper para que detecte las nuevas diapositivas
     swiper.update();
@@ -97,7 +98,7 @@ function recorrerJson(array, index) {
 
 // Función para obtener datos de la API de NASA
 function mostrarContenido(funcion, imagen) {
-    const searchInUrl = `${url}?q=${imagen}`;
+    const searchInUrl = `${url}?q=${imagen}&media_type=image`;
 
     fetch(searchInUrl)
         .then(response => {
@@ -123,9 +124,18 @@ document.addEventListener('DOMContentLoaded', () => {
 // Evento para el botón de búsqueda - imprime las imagenes en el carousel segun lo que busque el usuario
 btn.addEventListener('click', function () {
     const request = search.value;
-    swiperWrapper.innerHTML = '';
+    swiperImg.innerHTML = '';
     mostrarContenido(imprimirContenido, request);
-    swiperWrapper.scrollIntoView({ behavior: 'smooth' });
+    swiperImg.scrollIntoView({ behavior: 'smooth' });
 
         
 });
+
+verTodo.addEventListener('click', function () {
+    const searValue = search.value;
+    localStorage.removeItem('content');
+
+    if(searValue) {
+        localStorage.setItem('content', searValue);
+    }
+})
