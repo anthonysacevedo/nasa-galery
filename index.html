@@ -128,15 +128,15 @@
         <!-- Título para pantallas medianas en adelante -->
         <div class="row justify-content-center">
           <div class="d-none d-md-block col-lg-4 col-md-4 tituloContenido">
-            <h3>Galeria de Imagenes <br> <a href="content.html" class="vertodo" target="_blank">[ver todo...]</a></h3>
+            <h3>Galeria de Imagenes <br> <a href="content.html" class="vertodo" target="_blank">[ver todo...]</a><a href="#swiperVid">  [ver videos...]</a></h3>
             
           </div>
     
           <!-- Carousel -->
           <div class="col-lg-8 col-md-8 col-sm-12 mt-5 mb-3 align-items-center justify-content-center">
-            <div class="swiper">
+            <div id="swiperImg" class="swiper">
               <!-- Additional required wrapper -->
-              <div class="swiper-wrapper mt-3" id="swiperImg">
+              <div class="swiper-wrapper mt-3" id="swiperImgWrapper">
                 <!-- Slides -->
               </div>
               <!-- If we need pagination -->
@@ -196,7 +196,48 @@
   </div>
         
  
+  <!--Galeria de Videos-->
+  <div class="bg-dark">  
+    <div class="container mb-3">
   
+      <!-- Título para pantallas pequeñas -->
+      <div class="row justify-content-center">
+        <div class="d-block d-md-none tituloContenido">
+          <h3>Galeria de Videos</h3>
+      
+        </div>
+      </div>
+    </div>
+  
+    <div class="carouser-container">
+      <!-- Título para pantallas medianas en adelante -->
+      <div class="row justify-content-center">
+        <div class="d-none d-md-block col-lg-4 col-md-4 tituloContenido">
+          <h3 class="text-white">Galeria de Videos <br> <a href="content.html" class="vertodo" target="_blank">[ver todo...]</a></h3>
+          
+        </div>
+  
+        <!-- Carousel -->
+        <div class="col-lg-8 col-md-8 col-sm-12 mt-5 mb-3 align-items-center justify-content-center">
+          <div id="swiperVid" class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper mt-3" id="swiperVidWrapper">
+              <!-- Slides -->
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+          
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          
+            <!-- If we need scrollbar -->
+            <div class="swiper-scrollbar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     
 <!--Modal para tarjetas con informacion sobre las imagenes-->

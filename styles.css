@@ -3,7 +3,7 @@
 
 .swiper {
     width: 100%;
-    height: 70vh;
+    height: 80vh;
     margin-right: 0;
    
   }
@@ -23,6 +23,16 @@
   filter: grayscale(0%);
 }
 
+.swiper video {
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+}
+
+.swiper video:hover {
+  filter: grayscale(0%);
+}
+
+
 .carousel-container {
   margin-right: 0 !important;
   
@@ -34,6 +44,7 @@ body, html {
   overflow-x: hidden; /* Evita el desplazamiento horizontal */
   height: 100%; /* Asegura que el cuerpo ocupe toda la altura */
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -214,6 +225,8 @@ div.transparency::before {
   opacity: 0.2;
   
 }
+
+
 
 .titleMini {
   font-size: 47pt;

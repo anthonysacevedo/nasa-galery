@@ -1,141 +1,156 @@
 const search = document.getElementById('search');
 const btn = document.getElementById('search-button');
 const url = 'https://images-api.nasa.gov/search';
-const swiperImg = document.getElementById('swiperImg'); // Accede al contenedor del carrusel de imagenes
+const swiperImgWrapper = document.querySelector('#swiperImg .swiper-wrapper'); // Contenedor del carrusel de imágenes
+const swiperVidWrapper = document.querySelector('#swiperVid .swiper-wrapper'); // Contenedor del carrusel de videos
 const modalContent = document.getElementById('modalContent');
 const modalTitle = document.getElementById('exampleModalLabel');
 const verTodo = document.querySelector('.vertodo');
 
-// Inicializamos Swiper
-const swiper = new Swiper('.swiper', {
+// Configuración de Swiper para imágenes
+const swiperImages = new Swiper('#swiperImg', {
     direction: 'horizontal',
     loop: false,
-    effect: 'zoom',
     slidesPerView: 1.1,
     spaceBetween: 20,
-    centeredSildes: true,
-    grabCursor: true,
-
-    // Navigation arrows
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
+    scrollbar: {
+        el: '.swiper-scrollbar',
+    },
+});
 
-    // Scrollbar (opcional)
+// Configuración de Swiper para videos
+const swiperVideos = new Swiper('#swiperVid', {
+    direction: 'horizontal',
+    loop: false,
+    slidesPerView: 1.1,
+    spaceBetween: 20,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
     scrollbar: {
         el: '.swiper-scrollbar',
     },
 });
 
 // Función para imprimir imágenes en el carrusel
-function imprimirContenido(array) {
-    const fragment = document.createDocumentFragment();
-
-    for (let i = 6; i < array.length; i++) {
-        let item = array[i];
-        let imageUrl = item.links?.[0]?.href;
-    
+function imprimirImagenes(array) {
+    swiperImgWrapper.innerHTML = ''; // Limpiar carrusel anterior
+    array.forEach((item, index) => {
+        const imageUrl = item.links?.[0]?.href;
         if (imageUrl) {
-            // Crear el enlace <a>
-            const a = document.createElement('a');
-            a.classList.add('img-link');
-            a.setAttribute('href', '#');
-            a.setAttribute('data-index', `${i}`);
-            a.setAttribute('data-bs-toggle', 'modal');
-            a.setAttribute('data-bs-target', '#exampleModal');
-    
-            // Crear el contenedor <div> con la clase swiper-slide
-            const colDiv = document.createElement('div');
-            colDiv.classList.add('swiper-slide');
-    
-            // Crear la imagen <img>
-            const img = document.createElement('img');
-            img.src = imageUrl;
-            img.alt = 'NASA Image';
-    
-            // Añadir la imagen al <div>
-            colDiv.appendChild(a);
-    
-            // Añadir el <div> al enlace <a>
-            a.appendChild(img);
-    
-            // Añadir el enlace <a> al fragmento
-            fragment.appendChild(colDiv);
+            const slide = document.createElement('div');
+            slide.classList.add('swiper-slide');
+            slide.innerHTML = `
+                <a href="#" class="img-link" data-index="${index}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <img src="${imageUrl}" alt="NASA Image" class="img-fluid">
+                </a>
+            `;
+            swiperImgWrapper.appendChild(slide);
         }
-    }
-    
-    // Añadir todo el fragmento al contenedor del carrusel
-    swiperImg.appendChild(fragment);
-    
-    // Actualizamos Swiper para que detecte las nuevas diapositivas
-    swiper.update();
+    });
 
-    const imgLinks = document.querySelectorAll('.img-link');
-    imgLinks.forEach(link => {
+    swiperImages.update(); // Actualizar Swiper
+
+    document.querySelectorAll('.img-link').forEach(link => {
         link.addEventListener('click', function () {
             const index = this.getAttribute('data-index');
-            recorrerJson(array, index);
+            mostrarDetalle(array[index]);
         });
     });
 }
 
+// Función para imprimir videos en el carrusel
+function imprimirVideos(array) {
+    swiperVidWrapper.innerHTML = ''; // Limpiar carrusel anterior
 
-function recorrerJson(array, index) {
-    const item = array[index];
-    const imageUrl = item.links?.[0]?.href;
-    const title = item.data?.[0]?.title;
-    const description = item.data?.[0]?.description || 'No description available.';
-
-    // Mostrar contenido en el modal
-    modalTitle.textContent = title;
-    modalContent.innerHTML = `
-        <div>
-            <img src="${imageUrl}" alt="NASA image" class="img-fluid">
-            <p class="mt-3">${description}</p>
-        </div>`;
+    // Iterar sobre los videos y obtener sus URLs reales
+    array.forEach(item => {
+        const videoManifestUrl = item.href; // URL del manifiesto de video
+        const thumbnailUrl = item.links?.[0]?.href;
+        if (videoManifestUrl) {
+            // Realizar una solicitud para obtener los videos disponibles
+            fetch(videoManifestUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al obtener el manifiesto de video');
+                    }
+                    return response.json();
+                })
+                .then(videoFiles => {
+                    // Usar el primer archivo MP4 disponible
+                    const videoUrl = videoFiles.find(file => file.endsWith('.mp4'));
+                    if (videoUrl) {
+                        const slide = document.createElement('div');
+                        slide.classList.add('swiper-slide');
+                        slide.innerHTML = `
+                            <video controls class="w-100" poster="${thumbnailUrl || ''}">
+                                <source src="${videoUrl}" type="video/mp4">
+                                Tu navegador no soporta reproducción de video.
+                            </video>
+                        `;
+                        swiperVidWrapper.appendChild(slide);
+                        swiperVideos.update(); // Actualizar Swiper
+                    }
+                })
+                .catch(error => console.error('Error al procesar el manifiesto de video:', error));
+        }
+    });
 }
 
-// Función para obtener datos de la API de NASA
-function mostrarContenido(funcion, imagen) {
-    const searchInUrl = `${url}?q=${imagen}&media_type=image`;
+// Mostrar detalles en el modal
+function mostrarDetalle(item) {
+    const imageUrl = item.links?.[0]?.href;
+    const title = item.data?.[0]?.title || 'Sin título';
+    const description = item.data?.[0]?.description || 'Sin descripción.';
+    modalTitle.textContent = title;
+    modalContent.innerHTML = `
+        <img src="${imageUrl}" alt="NASA Image" class="img-fluid">
+        <p class="mt-3">${description}</p>
+    `;
+}
 
-    fetch(searchInUrl)
+// Función para obtener datos de la API
+function obtenerContenido(query, tipo, callback) {
+    const searchUrl = `${url}?q=${query}&media_type=${tipo}`;
+    fetch(searchUrl)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Error al obtener datos de la API');
             }
             return response.json();
         })
         .then(data => {
-            const elements = data.collection.items || [];
-            funcion(elements);
+            const items = data.collection.items || [];
+            callback(items);
         })
         .catch(error => {
-            console.error('Error al obtener los datos:', error);
+            console.error(error);
         });
 }
 
-// Ejecutamos el código cuando el DOM esté completamente cargado
+// Inicializar contenido al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
-    mostrarContenido(imprimirContenido, 'sun');
+    obtenerContenido('sun', 'image', imprimirImagenes);
+    obtenerContenido('sun', 'video', imprimirVideos);
 });
 
-// Evento para el botón de búsqueda - imprime las imagenes en el carousel segun lo que busque el usuario
-btn.addEventListener('click', function () {
-    const request = search.value;
-    swiperImg.innerHTML = '';
-    mostrarContenido(imprimirContenido, request);
-    swiperImg.scrollIntoView({ behavior: 'smooth' });
-
-        
-});
-
-verTodo.addEventListener('click', function () {
-    const searValue = search.value;
-    localStorage.removeItem('content');
-
-    if(searValue) {
-        localStorage.setItem('content', searValue);
+// Buscar contenido al presionar el botón
+btn.addEventListener('click', () => {
+    const query = search.value.trim();
+    if (query) {
+        obtenerContenido(query, 'image', imprimirImagenes);
+        obtenerContenido(query, 'video', imprimirVideos);
+        swiperImgWrapper.scrollIntoView({ behavior: 'smooth' });
     }
-})
+});
+
+// Almacenar búsqueda en localStorage para la sección "Ver Todo"
+verTodo.addEventListener('click', () => {
+    const query = search.value.trim();
+    localStorage.setItem('content', query || 'sun');
+});
