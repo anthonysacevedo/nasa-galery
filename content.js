@@ -10,6 +10,7 @@ const searchTitle = document.querySelector('.searchTitle');
 // Función para imprimir imágenes en el carrusel
 function imprimirContenido(array) {
     content.innerHTML = ''; // Limpiar contenido anterior
+    content.classList.add('galery'); // Asegurar que el contenedor tenga la clase de grilla
     const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < array.length; i++) {
@@ -17,34 +18,24 @@ function imprimirContenido(array) {
         let imageUrl = item.links?.[0]?.href;
 
         if (imageUrl) {
-            // Crear el enlace <a>
-            const a = document.createElement('a');
-            a.classList.add('img-link');
-            a.setAttribute('href', '#');
-            a.setAttribute('data-index', `${i}`);
-            a.setAttribute('data-bs-toggle', 'modal');
-            a.setAttribute('data-bs-target', '#exampleModal');
-
-            // Crear el contenedor <div> con la clase col-3
-            const colDiv = document.createElement('div');
-            colDiv.classList.add('col-3', 'divImpress');
+            // Crear el contenedor <div> para cada imagen
+            const div = document.createElement('div');
+            div.classList.add('galery-item');
+            div.setAttribute('data-index', `${i}`);
+            div.setAttribute('data-bs-toggle', 'modal'); // Vincular al modal de Bootstrap
+            div.setAttribute('data-bs-target', '#exampleModal'); // ID del modal
 
             // Crear la imagen <img>
             const img = document.createElement('img');
             img.src = imageUrl;
             img.alt = 'NASA Image';
-            img.classList.add('img-fluid','object-fit-cover','imgImpress');
-            
+            img.classList.add('img-fluid', 'hover-effect'); // Clase para hover y responsividad
 
-            // Añadir la imagen al enlace <a>
-            a.appendChild(img);
+            // Añadir la imagen al contenedor
+            div.appendChild(img);
 
-            // Añadir el enlace <a> al contenedor <div>
-        
-            colDiv.appendChild(a);
-
-            // Añadir el contenedor <div> al fragmento
-            fragment.appendChild(colDiv);
+            // Añadir el contenedor al fragmento
+            fragment.appendChild(div);
         }
     }
 
@@ -52,14 +43,17 @@ function imprimirContenido(array) {
     content.appendChild(fragment);
 
     // Configurar eventos para abrir modal con detalles
-    const imgLinks = document.querySelectorAll('.img-link');
-    imgLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            const index = this.getAttribute('data-index');
-            recorrerJson(array, index);
+    const galeryItems = document.querySelectorAll('.galery-item');
+    galeryItems.forEach(item => {
+        item.addEventListener('click', function () {
+            const index = this.getAttribute('data-index'); // Obtener índice del elemento
+            recorrerJson(array, index); // Llamar a la función para mostrar detalles
         });
     });
 }
+
+
+
 
 // Función para mostrar detalles en el modal
 function recorrerJson(array, index) {

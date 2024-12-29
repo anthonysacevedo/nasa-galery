@@ -294,12 +294,39 @@ div.transparency::before {
 /*MODAL___________________________________________*/
 
 
+.modal-content {
+  border-radius: 0 !important;
+  background-color: rgba(0, 0, 0, 0.6); 
+  backdrop-filter: blur(5px);           
+  position: relative;
+  z-index: 2;
+ 
+}
 
 .modal-body img {
-max-width: 100%;
-height: auto;
-vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  opacity: 1;        
+  z-index: 3;        
 }
+
+.modal-body p {
+  color: white;
+  opacity: 1;        
+  z-index: 3;        
+}
+
+.modal-header {
+  font-family: "Space Grotesk", sans-serif;
+  background-color: rgba(33, 37, 41, 1); 
+  color: white;
+  border-radius: 0;
+  opacity: 1;        
+}
+
+
+
 
 a p {
   text-decoration: none;
@@ -380,7 +407,36 @@ a p {
   width: 100%;
 }
 
-.divImpress {
-  padding-bottom: 1rem;
+.galery {
+  display: grid; /* Activa la grilla */
+  grid-template-columns: repeat(4, 1fr); /* Cuatro columnas iguales */
+  gap: 10px; /* Espacio entre los elementos */
+  max-width: 100%; /* Ancho máximo del contenedor */
+  margin: 0 auto;
+  padding: 1rem; 
+  grid-auto-flow: dense;
 }
 
+.galery-item {
+  position: relative; /* Permite posicionar elementos hijos si es necesario */
+  cursor: pointer; /* Indica que es clickeable */
+}
+
+.galery-item:nth-child(4n + 2), /* Segunda columna */
+.galery-item:nth-child(4n + 3) /* Tercera columna */ {
+  grid-row: span 2; /* Hacer que ocupen más espacio vertical */
+}
+
+.galery-item:nth-child(7n + 1) {
+  grid-column: span 2;
+}
+.galery img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  transition: transform 0.3s ease; 
+}
+
+.galery img:hover {
+  transform: scale(1.01); /* Escala al pasar el cursor */
+}
