@@ -68,12 +68,37 @@ function imprimirImagenes(array) {
 function imprimirVideos(array) {
     swiperVidWrapper.innerHTML = ''; // Limpiar carrusel anterior
 
-    // Iterar sobre los videos y obtener sus URLs reales
     array.forEach(item => {
         const videoManifestUrl = item.href; // URL del manifiesto de video
         const thumbnailUrl = item.links?.[0]?.href;
+
         if (videoManifestUrl) {
-            // Realizar una solicitud para obtener los videos disponibles
+            // Crear la slide con una imagen de marcador de posición
+            const slide = document.createElement('div');
+            slide.classList.add('swiper-slide');
+            slide.setAttribute('data-video-manifest', videoManifestUrl); // Guardar la URL del manifiesto
+            slide.innerHTML = `
+                <div class="video-container">
+                    <img src="${thumbnailUrl || ''}" alt="Cargando..." class="w-100 video-placeholder" />
+                </div>
+            `;
+            swiperVidWrapper.appendChild(slide);
+        }
+    });
+
+    // Inicializar o actualizar Swiper
+    swiperVideos.update();
+
+    // Agregar el evento de clic a cada slide para cargar y reproducir el video
+    swiperVidWrapper.addEventListener('click', (event) => {
+        const slide = event.target.closest('.swiper-slide');
+        if (!slide) return; // Salir si no se hizo clic en una slide
+
+        const videoManifestUrl = slide.getAttribute('data-video-manifest');
+        const videoContainer = slide.querySelector('.video-container');
+
+        if (videoManifestUrl && !videoContainer.querySelector('video')) {
+            // Obtener la URL del video desde el manifiesto
             fetch(videoManifestUrl)
                 .then(response => {
                     if (!response.ok) {
@@ -82,25 +107,42 @@ function imprimirVideos(array) {
                     return response.json();
                 })
                 .then(videoFiles => {
-                    // Usar el primer archivo MP4 disponible
                     const videoUrl = videoFiles.find(file => file.endsWith('.mp4'));
                     if (videoUrl) {
-                        const slide = document.createElement('div');
-                        slide.classList.add('swiper-slide');
-                        slide.innerHTML = `
-                            <video controls class="w-100" poster="${thumbnailUrl || ''}">
+                        // Reemplazar la imagen por el video
+                        videoContainer.innerHTML = `
+                            <video controls autoplay muted playsinline class="w-100">
                                 <source src="${videoUrl}" type="video/mp4">
                                 Tu navegador no soporta reproducción de video.
                             </video>
                         `;
-                        swiperVidWrapper.appendChild(slide);
-                        swiperVideos.update(); // Actualizar Swiper
+
+                        // Asegurarse de que el video comience a reproducirse
+                        const videoElement = videoContainer.querySelector('video');
+                        videoElement.addEventListener('loadeddata', () => {
+                            videoElement.play();
+                        });
                     }
                 })
                 .catch(error => console.error('Error al procesar el manifiesto de video:', error));
+        } else if (videoContainer.querySelector('video')) {
+            // Reproducir el video existente si ya fue cargado
+            const videoElement = videoContainer.querySelector('video');
+            videoElement.play();
         }
     });
+
+    // Pausar videos en slides inactivas al cambiar de slide
+    swiperVideos.on('transitionStart', () => {
+        const allSlides = swiperVidWrapper.querySelectorAll('.swiper-slide video');
+        allSlides.forEach(video => {
+            video.pause();
+        });
+    });
 }
+
+
+
 
 // Mostrar detalles en el modal
 function mostrarDetalle(item) {

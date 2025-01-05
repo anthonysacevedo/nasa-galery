@@ -100,6 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
     search.value = searchValue;
 
     mostrarContenido(imprimirContenido, searchValue); // Mostrar contenido por defecto
+   
+    
 });
 
 // Evento para el botón de búsqueda - imprime las imágenes según lo que busque el usuario
@@ -119,3 +121,4 @@ btn.addEventListener('click', function (event) {
         alert('Por favor, ingrese un término de búsqueda.'); // Validar si el campo está vacío
     }
 });
+

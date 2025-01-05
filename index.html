@@ -33,15 +33,18 @@
         </div>
         
         <div class="col-2 banner-content banner1 d-none d-md-block">
-          <img src="banner1.jpeg" class="img-fluid object-fit-cover">
+          <a href="#swiperImg"><img src="banner1.jpeg" class="img-fluid object-fit-cover"></a>
+          <a href="#swiperImg"><p>Galeria de <br> Imagenes</p></a>
         </div>
         
         <div class="col-2 banner-content banner2 d-none d-md-block">
-          <img src="banner2.jpeg" class="img-fluid object-fit-cover">
+          <a href="#swiperVid"><img src="banner2.jpeg" class="img-fluid object-fit-cover"></a>
+          <a href="#swiperVid"><p>Galeria <br> de Videos</p></a>
         </div>
 
         <div class="col-2 banner-content banner2 d-none d-md-block">
-          <img src="banner2.jpeg" class="img-fluid object-fit-cover">
+          <a href="#sobreNasa"><img src="banner3.webp" class="img-fluid object-fit-cover"></a>
+          <a href="#sobreNasa"><p>Sobre <br> la NASA</p></a>
         </div>
        
       
@@ -167,8 +170,8 @@
   <div class="bg-white">
     <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-6 col-md-6 col-sm-12 mt-5 mb-5">
-        <h3 class="text-dark">Sobre la NASA</h3>
+      <div class="col-lg-6 col-md-6 col-sm-12 mt-5 mb-5 infoNasa1">
+        <h3 class="text-dark" id="sobreNasa">Sobre la NASA</h3>
         <p class="text-justify">Durante más de 50 años, los satélites de la NASA 
           han proporcionado datos sobre la tierra, el agua, 
           el aire, la temperatura y el clima de la Tierra. 
@@ -181,7 +184,7 @@
         </p>
         <p class="sobreNasa" ><a href="https://www.nasa.gov/" target="_blank">Ver mas aqui.</a></p>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12 mt-5 mb-5">
+      <div class="col-lg-6 col-md-6 col-sm-12 mt-5 mb-5 infoNasa2">
         <h3 class="text-dark">Por qué ir al espacio?</h3>
         <p class="text-justify">La exploración espacial humana ayuda a abordar preguntas 
           fundamentales sobre nuestro lugar en el universo y la historia 
@@ -216,7 +219,7 @@
     <div class="row justify-content-center">
        <!-- Título para pantallas medianas en adelante -->
        <div class="d-none d-md-block col-lg-4 col-md-4 tituloContenido">
-        <h3 class="text-white">Galeria de Videos <br> <a href="content.html" class="vertodo" target="_blank">[ver todo...]</a></h3>
+        <h3 class="text-white">Galeria de Videos <br> <a href="#swiperImg" class="vertodo">[ver imagenes]</a></h3>
         
       </div>
       
@@ -274,5 +277,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="init.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+     <script src="https://unpkg.com/scrollreveal"></script>
+     <script src="animations.js"></script>
 </body>
 </html>
