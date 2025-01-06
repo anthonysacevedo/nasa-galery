@@ -44,6 +44,11 @@ body, html {
   height: 100%; /* Asegura que el cuerpo ocupe toda la altura */
   scrollbar-width: none;
   scroll-behavior: smooth;
+  
+    -webkit-overflow-scrolling: touch; /* Habilita el desplazamiento suave */
+    overflow-x: hidden; /* Evita desplazamiento horizontal accidental */
+    touch-action: manipulation; /* Mejora la interacción táctil */
+
 }
 
 body {
