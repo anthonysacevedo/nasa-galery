@@ -13,6 +13,7 @@ body, html {
 html {
     background-image: url(galaxia.webp);
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 footer {
