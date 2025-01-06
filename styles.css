@@ -40,7 +40,7 @@
 body, html {
   margin: 0;
   padding: 0;
-
+overflow: hidden; 
   height: 100%; /* Asegura que el cuerpo ocupe toda la altura */
   scrollbar-width: none;
   scroll-behavior: smooth;
@@ -51,7 +51,7 @@ body, html {
 
 }
 
-html {
+body {
   background-image: url(galaxia.webp);
   background-size: cover;
 background-repeat: no-repeat;
@@ -79,6 +79,9 @@ h3 {
   font-family: "Space Grotesk", sans-serif;
 }
 
+.introText {
+  overflow: visible;
+}
 .subtitleMenor {
   font-family: "Space Grotesk", sans-serif;
   font-weight: bolder;
