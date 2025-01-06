@@ -10,7 +10,7 @@ body, html {
     height: 100%;
 }
 
-body {
+html {
     background-image: url(galaxia.webp);
     background-size: cover;
 }
