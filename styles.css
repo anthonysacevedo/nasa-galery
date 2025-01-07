@@ -40,21 +40,24 @@
 body, html {
   margin: 0;
   padding: 0;
-overflow: hidden; 
   height: 100%; /* Asegura que el cuerpo ocupe toda la altura */
   scrollbar-width: none;
   scroll-behavior: smooth;
   
-    -webkit-overflow-scrolling: touch; /* Habilita el desplazamiento suave */
-     /* Evita desplazamiento horizontal accidental */
-    touch-action: manipulation; /* Mejora la interacción táctil */
-
+ 
 }
+
 
 body {
   background-image: url(galaxia.webp);
   background-size: cover;
-background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; /* Fija la imagen al viewport */
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Asegura que el cuerpo ocupe toda la altura */
+  overflow-x: hidden;
 }
 
 footer {
@@ -79,9 +82,6 @@ h3 {
   font-family: "Space Grotesk", sans-serif;
 }
 
-.introText {
-  overflow: visible;
-}
 .subtitleMenor {
   font-family: "Space Grotesk", sans-serif;
   font-weight: bolder;
@@ -127,9 +127,7 @@ text-align: start;
 .introContainer2 {
   margin: auto;
   padding-left: 3rem;
-  padding-top: 4rem;
- 
-  
+  padding-top: 4rem; 
 
 }
 
@@ -466,6 +464,9 @@ a p {
 .galery img:hover {
   transform: scale(1.01); /* Escala al pasar el cursor */
 }
+
+
+
 
 
 /* Mobile Design --------------------------------------------------*/
